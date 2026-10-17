@@ -16,13 +16,13 @@ csv_data = File.read(csv_file)
 products = CSV.parse(csv_data, headers: true, encoding: 'iso-8859-1')
 
 products.each do |row|
-  category = Category.find_or_create_by(name: row['category_name'])
+  category = Category.find_or_create_by(name: row['category'])
 
   category.products.create!(
-    title: row['title'],
-    description: row['description'],
+    title: row['name'],
     price: row['price'],
-    stock_quantity: row['stock_quantity']
+    description: row['description'],
+    stock_quantity: row['stock quantity']
   )
 end
 
